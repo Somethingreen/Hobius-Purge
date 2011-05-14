@@ -6,7 +6,7 @@
 
 var tracking_time = 10000;
 var tracking_interval = 1000;
-var debug_mode = true;
+var debug_mode = false;
 
 
 var purged_nicknames = {
