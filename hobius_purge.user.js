@@ -131,21 +131,23 @@ function purge_posts(posts) {
 
 function purge_post(post_id) {
     var post_body = $C($(post_id), 'entry-body');
-    post_body.style.display = 'none';
-    var unhide_link = document.createElement('a');
-    unhide_link.style.display = 'block';
-    unhide_link.style.textAlign = 'center';
-    unhide_link.style.color = '#808080';
-    unhide_link.style.backgroundColor = '#ebebeb';
-    unhide_link.style.padding = '0.25em';
-    unhide_link.style.cursor = 'pointer';
-    unhide_link.innerHTML = 'show purged post';
-    unhide_link.addEventListener('click', function (e) { 
-        var post_body = $C($(post_id), 'entry-body');
-        post_body.style.display = '';
-        e.currentTarget.style.display = 'none';
-    }, false);
-    document.getElementById(post_id).appendChild(unhide_link);
+    if (post_body.style.display != 'none') {
+        post_body.style.display = 'none';
+        var unhide_link = document.createElement('a');
+        unhide_link.style.display = 'block';
+        unhide_link.style.textAlign = 'center';
+        unhide_link.style.color = '#808080';
+        unhide_link.style.backgroundColor = '#ebebeb';
+        unhide_link.style.padding = '0.25em';
+        unhide_link.style.cursor = 'pointer';
+        unhide_link.innerHTML = 'show purged post';
+        unhide_link.addEventListener('click', function (e) { 
+            var post_body = $C($(post_id), 'entry-body');
+            post_body.style.display = '';
+            e.currentTarget.style.display = 'none';
+        }, false);
+        document.getElementById(post_id).appendChild(unhide_link);
+    }    
 }
 
 function display_user_controls(nickname) {
